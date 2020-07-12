@@ -27,4 +27,9 @@ describe('actions', () => {
     store.dispatch({type: 'DECREMENT'});
     expect(store.getState()).toBe(-1);
   });
+
+  it('current state is zero', () => {
+    store.dispatch({type: 'ALAKI'});
+    expect(store.getState()).toBe(0);
+  });
 })

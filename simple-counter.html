@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #counter {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+    }
+  </style>
+  <title>Counter</title>
+</head>
+<body>
+  <button id="btnPlus">+</button>
+  <div id="counter"></div>
+  <button id="btnMinus">-</button>
+  
+  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  <script>
+    function counter (state = 0, action) {
+      switch(action.type) {
+        case 'PLUS':
+          return state + 1;
+        case 'MINUS':
+          return  state - 1;
+        default:
+          return state;
+      }
+    }
+
+    const store = Redux.createStore(counter);
+    function render() {
+      document.getElementById('counter').innerText = store.getState();
+    }
+    render();
+    store.subscribe(render);
+    document.getElementById('btnPlus').addEventListener('click', () => {
+      store.dispatch({type: 'PLUS'});
+    });
+
+    document.getElementById('btnMinus').addEventListener('click', () => {
+      store.dispatch({type: 'MINUS'});
+    });
+  </script>
+</body>
+</html>

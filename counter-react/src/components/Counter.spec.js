@@ -63,4 +63,17 @@ describe('Counter component', () => {
         done()
         }, 1000)
     })
+
+    it('test this in class', () => {
+      class TestClass {
+        color;
+        constructor() {
+          this.color = 'red';
+        }
+        sampleMethod() {
+          return this.color;
+        }
+      }
+      expect(new TestClass().color).toBe('red');
+    });
 })  
